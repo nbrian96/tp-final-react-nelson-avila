@@ -8,6 +8,7 @@ import PokemonList from '@pages/PokemonList'
 
 import Footer from '@components/Footer'
 import Navbar from '@components/Navbar'
+import ScrollToTopButton from '@components/ScrollToTopButton'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Box>
+      <ScrollToTopButton />
       <Footer />
     </Box>
   )
