@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 
   const menuItems = [
     { text: 'Inicio', path: '/', icon: <HomeIcon /> },
-    { text: 'Pokédex', path: '/pokemon', icon: <SportsEsportsIcon /> },
+    { text: 'Pokédex', path: '/pokedex', icon: <SportsEsportsIcon /> },
   ];
 
   const drawer = (
