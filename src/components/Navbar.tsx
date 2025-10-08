@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { APP_NAME } from '@constants/index';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,8 +41,8 @@ const Navbar: React.FC = () => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        TP Final Integrador
+      <Typography variant="h6" sx={{ my: 2 }} onClick={() => handleNavigation('/')}>
+        {APP_NAME}
       </Typography>
       <List>
         {menuItems.map((item) => (
@@ -70,9 +71,10 @@ const Navbar: React.FC = () => {
           <Typography
             variant="h6"
             component="div"
+            onClick={() => handleNavigation('/')}
             sx={{ flexGrow: 1, fontWeight: 'bold' }}
           >
-            Trabajo Práctico Final Integrador
+            {APP_NAME}
           </Typography>
 
           {isMobile ? (
@@ -111,7 +113,7 @@ const Navbar: React.FC = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
         sx={{
           display: { xs: 'block', md: 'none' },

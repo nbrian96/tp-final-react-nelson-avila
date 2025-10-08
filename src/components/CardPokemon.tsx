@@ -3,15 +3,23 @@ import { getTypeColor } from '@hooks/usePokemon';
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const CardPokemon = (pokemon: IPokemonDetails) => {
-    console.log(pokemon);
+
+    const handleCardClick = () => {
+        window.open(`/pokemon/${pokemon.name}`, '_blank');
+    };
+
+    const image = pokemon.sprites.other?.home?.front_default || pokemon.sprites.front_default;
+
     return (
         <Card
+            onClick={handleCardClick}
             sx={{
                 height: '100%',
                 width: '15rem',
                 display: 'flex',
                 flexDirection: 'column',
                 transition: 'transform 0.2s',
+                cursor: 'pointer',
                 '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: 4,
@@ -21,7 +29,7 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
             <CardMedia
                 component="img"
                 height="200"
-                image={pokemon.sprites.front_default}
+                image={image}
                 alt={pokemon.name}
                 sx={{ objectFit: 'contain', p: 1 }}
             />
@@ -30,7 +38,9 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
                     #{pokemon.id.toString().padStart(3, '0')}
                 </Typography>
                 <Typography sx={{ fontWeight: 'bold', fontSize: '1rem', my: 1 }}>
-                    {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                    {pokemon.name
+                        .replaceAll('-', ' ')
+                        .charAt(0).toUpperCase() + pokemon.name.replaceAll('-', ' ').slice(1)}
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                     {pokemon.types.map((type, index) => (

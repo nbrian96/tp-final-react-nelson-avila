@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-    Alert,
     Box,
     Container,
     Grid,
@@ -9,9 +8,12 @@ import {
 } from '@mui/material';
 
 import { POKEMON_PAGE_SIZE, BACKGROUND_COLOR } from '@constants/index';
-import Loading from '@components/Loading';
-import { fetchPokemonList } from '@hooks/usePokemon';
+
 import CardPokemon from '@components/CardPokemon';
+import ContainerError from '@components/ContainerError';
+import Loading from '@components/Loading';
+
+import { fetchPokemonList } from '@hooks/usePokemon';
 import type { IPokemonListResponse, IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const PokemonList = () => {
@@ -49,16 +51,19 @@ const PokemonList = () => {
     }
 
     if (error) {
-        return (
-            <Container maxWidth="lg" sx={{ py: 4 }}>
-                <Alert severity="error">{error}</Alert>
-            </Container>
-        );
+        return <ContainerError message={error} />;
     }
 
     return (
         <Container maxWidth="lg" sx={{ py: 4, backgroundColor: BACKGROUND_COLOR }}>
-            <Typography variant="h4" component="h1" gutterBottom align="center">
+            <Typography
+                    variant="body1"
+                    color="text.primary"
+                    gutterBottom
+                    align="center"
+                    fontSize="2.5rem"
+                    sx={{ fontWeight: 'bold' }}
+                >
                 Pokédex
             </Typography>
 
@@ -70,12 +75,8 @@ const PokemonList = () => {
             >
                 {pokemonDetails.map((pokemon: IPokemonDetails) => (
                     <Grid
-                        item
                         key={pokemon.id}
-                        xs={12}
-                        sm={6}
-                        md={4}
-                        lg={3}
+                        size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
                         display="flex"
                         justifyContent="center"
                     >
@@ -91,7 +92,7 @@ const PokemonList = () => {
                         page={currentPage}
                         onChange={handlePageChange}
                         color="primary"
-                        size="large"
+                        size="small"
                         showFirstButton
                         showLastButton
                     />

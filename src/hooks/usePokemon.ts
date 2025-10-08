@@ -6,7 +6,7 @@ export const getTypeColor = (type: string) => {
         fire: '#ff6b6b',
         water: '#4dabf7',
         grass: '#51cf66',
-        electric: '#ffd43b',
+        electric: '#eed535',
         psychic: '#da77f2',
         ice: '#74c0fc',
         dragon: '#4d26bf',
@@ -15,9 +15,9 @@ export const getTypeColor = (type: string) => {
         normal: '#868e96',
         fighting: '#e64980',
         flying: '#91a7ff',
-        poison: '#9775fa',
-        ground: '#fd7e14',
-        rock: '#868e96',
+        poison: '#b97fc9',
+        ground: '#f7de3f',
+        rock: '#a38c21',
         bug: '#51cf66',
         ghost: '#9775fa',
         steel: '#868e96',
@@ -44,6 +44,24 @@ export const fetchPokemonList = async (page: number) => {
 
         const details = await Promise.all(detailsPromises);
         return { data, details };
+    } catch (error) {
+        throw new Error((error as Error).message);
+    }
+};
+
+export const fetchPokemonDetailsById = async (id: string) => {
+    try {
+        const response = await fetch(`${POKEMON_API_BASE_URL}/pokemon/${id}`);
+
+        if (!response.ok) {
+            throw new Error(`Error al buscar pokémon ${id}`);
+        }
+
+        const data = await response.json();
+
+        const details = await fetchPokemonDetails(data.species);
+
+        return { ...details, ...data };
     } catch (error) {
         throw new Error((error as Error).message);
     }
