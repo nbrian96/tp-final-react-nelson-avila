@@ -24,30 +24,30 @@ export interface IPokemonDetails {
             };
         };
     };
-    abilities: Array<{
+    abilities: {
         ability: {
             name: string;
         };
-    }>;
-    types: Array<{
+    }[];
+    types: {
         type: {
             name: string;
         };
-    }>;
-    stats: Array<{
+    }[];
+    stats: {
         base_stat: number;
         stat: {
             name: string;
         };
-    }>;
+    }[];
     height: number;
     weight: number;
-    flavor_text_entries: Array<{
+    flavor_text_entries: {
         language: {
             name: string;
         };
         flavor_text: string;
-    }>;
+    }[];
 }
 
 export interface IFavoritesState {

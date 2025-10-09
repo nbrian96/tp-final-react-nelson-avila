@@ -3,8 +3,8 @@ import favoritesReducer from './favoritesSlice';
 
 export const store = configureStore({
   reducer: {
-    favorites: favoritesReducer,
-  },
+    favorites: favoritesReducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

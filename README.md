@@ -1,73 +1,117 @@
-# React + TypeScript + Vite
+# 🎮 Pokédex - TP Final Integrador
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna para explorar el mundo de los Pokémon, desarrollada con React, TypeScript y Material-UI.
 
-Currently, two official plugins are available:
+## ✨ Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Exploración de Pokémon**: Navega por una lista completa de Pokémon
+- ❤️ **Sistema de Favoritos**: Guarda tus Pokémon favoritos con persistencia local
+- 🎲 **Pokémon Aleatorios**: Descubre nuevos Pokémon en la página principal
+- 📱 **Diseño Responsive**: Optimizado para desktop, tablet y móvil
+- 🎨 **UI Moderna**: Interfaz atractiva con Material-UI
+- ⚡ **Rendimiento**: Carga rápida con Vite y React
 
-## React Compiler
+## 🚀 Instalación y Configuración
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Prerrequisitos
 
-## Expanding the ESLint configuration
+Asegúrate de tener instalado:
+- [Node.js](https://nodejs.org/) (versión 16 o superior)
+- [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Pasos de Instalación
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clona el repositorio**
+   ```bash
+   git clone <url-del-repositorio>
+   cd tp-final-react-nelson-avila
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Instala las dependencias**
+   ```bash
+   npm install
+   ```
+   o si usas yarn:
+   ```bash
+   yarn install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Inicia el servidor de desarrollo**
+   ```bash
+   npm run dev
+   ```
+   o con yarn:
+   ```bash
+   yarn dev
+   ```
+
+4. **Abre tu navegador**
+   - Ve a `http://localhost:5173`
+   - ¡La aplicación debería estar funcionando!
+
+## 📜 Scripts Disponibles
+
+```bash
+# Desarrollo
+npm run dev          # Inicia el servidor de desarrollo
+
+# Producción
+npm run build        # Construye la aplicación para producción
+npm run preview      # Previsualiza la build de producción
+
+# Linting
+npm run lint         # Ejecuta ESLint para verificar el código
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tecnologías Utilizadas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React 19** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **Vite** - Herramienta de build y desarrollo
+- **Material-UI (MUI)** - Componentes de UI
+- **Redux Toolkit** - Manejo de estado
+- **React Router** - Navegación
+- **React Slick** - Carruseles
+- **ESLint** - Linting del código
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Estructura del Proyecto
+
 ```
+src/
+├── components/         # Componentes reutilizables
+├── pages/              # Páginas de la aplicación
+├── hooks/              # Custom hooks
+├── store/              # Redux store y slices
+├── interfaces/         # Definiciones de TypeScript
+├── constants/          # Constantes de la aplicación
+└── assets/             # Recursos estáticos
+```
+
+## 🎯 Funcionalidades Principales
+
+### Página Principal
+- Carrusel de Pokémon favoritos
+- Sección de Pokémon aleatorios para descubrir
+
+### Lista de Pokémon
+- Paginación de Pokémon
+- Búsqueda y filtrado
+- Vista de tarjetas responsive
+
+### Detalles de Pokémon
+- Información completa del Pokémon
+- Estadísticas visuales
+- Botón de favoritos
+
+### Favoritos
+- Lista de Pokémon guardados
+- Persistencia en localStorage
+- Opción de limpiar favoritos
+
+## 📝 Licencia
+
+Este proyecto es parte del Trabajo Práctico Final Integrador.
+
+---
+
+**Desarrollado por Nelson Avila** 🚀

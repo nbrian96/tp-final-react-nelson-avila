@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Box, Typography, Button, Container, Paper } from '@mui/material';
-import { Shuffle, Refresh, Casino, Lightbulb } from '@mui/icons-material';
+import { Box, Button, Container, Paper, Typography } from '@mui/material';
+import { Casino, Lightbulb, Refresh, Shuffle } from '@mui/icons-material';
 
 import { fetchRandomPokemon } from '@hooks/usePokemon';
 
@@ -11,130 +11,130 @@ import Loading from '@components/Loading';
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const RandomPokemonSection = () => {
-    const [randomPokemon, setRandomPokemon] = useState<IPokemonDetails[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+  const [randomPokemon, setRandomPokemon] = useState<IPokemonDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    const loadRandomPokemon = async () => {
-        try {
-            setLoading(true);
-            setError(null);
-            const pokemon = await fetchRandomPokemon(3);
-            setRandomPokemon(pokemon);
-        } catch (err) {
-            setError('Error al cargar Pokémon aleatorios');
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        loadRandomPokemon();
-    }, []);
-
-    if (loading) {
-        return (
-            <Container maxWidth="md" sx={{ py: 4 }}>
-                <Typography variant="h5" sx={{ mb: 3, textAlign: 'center', fontWeight: 'bold' }}>
-                    Descubre Pokémon Aleatorios
-                </Typography>
-                <Loading message="Cargando Pokémon aleatorios..." />
-            </Container>
-        );
+  const loadRandomPokemon = async() => {
+    try {
+      setLoading(true);
+      setError(null);
+      const pokemon = await fetchRandomPokemon(3);
+      setRandomPokemon(pokemon);
+    } catch (err) {
+      setError('Error al cargar Pokémon aleatorios');
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (error) {
-        return (
-            <Container maxWidth="md" sx={{ py: 4 }}>
-                <Paper elevation={2} sx={{ p: 4, textAlign: 'center' }}>
-                    <Typography variant="h6" color="error" sx={{ mb: 2 }}>
-                        {error}
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        onClick={loadRandomPokemon}
-                        startIcon={<Refresh />}
-                    >
-                        Reintentar
-                    </Button>
-                </Paper>
-            </Container>
-        );
-    }
+  useEffect(() => {
+    loadRandomPokemon();
+  }, []);
 
+  if (loading) {
     return (
-        <Container maxWidth="md" sx={{ py: 4, mt: 8 }}>
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
-                <Typography
-                    variant="h5"
-                    sx={{
-                        mb: 2,
-                        fontWeight: 'bold',
-                        color: 'primary.main',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: 1
-                    }}
-                >
-                    <Casino fontSize="small" />
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Typography variant="h5" sx={{ mb: 3, textAlign: 'center', fontWeight: 'bold' }}>
                     Descubre Pokémon Aleatorios
-                </Typography>
-                <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ mb: 3 }}
-                >
-                    ¡Explora Pokémon que quizás no conocías!
-                </Typography>
-                <Button
-                    variant="outlined"
-                    startIcon={<Shuffle />}
-                    onClick={loadRandomPokemon}
-                    sx={{
-                        mb: 3,
-                        borderRadius: 2,
-                        textTransform: 'none',
-                        fontWeight: 'bold'
-                    }}
-                >
-                    Obtener Nuevos Pokémon
-                </Button>
-            </Box>
-
-            <Box
-                sx={{
-                    display: 'flex',
-                    gap: 2,
-                    justifyContent: 'center',
-                    flexWrap: 'wrap',
-                    '& > *': {
-                        flex: '1 1 250px',
-                        minWidth: '250px',
-                        maxWidth: '300px'
-                    }
-                }}
-            >
-                {randomPokemon.map((pokemon) => (
-                    <Box key={pokemon.id} sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <CardPokemon {...pokemon} />
-                    </Box>
-                ))}
-            </Box>
-
-            <Box sx={{ textAlign: 'center', mt: 3 }}>
-                <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}
-                >
-                    <Lightbulb fontSize="small" />
-                    Haz clic en cualquier Pokémon para ver más detalles
-                </Typography>
-            </Box>
-        </Container>
+        </Typography>
+        <Loading message="Cargando Pokémon aleatorios..." />
+      </Container>
     );
+  }
+
+  if (error) {
+    return (
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Paper elevation={2} sx={{ p: 4, textAlign: 'center' }}>
+          <Typography variant="h6" color="error" sx={{ mb: 2 }}>
+            {error}
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={loadRandomPokemon}
+            startIcon={<Refresh />}
+          >
+                        Reintentar
+          </Button>
+        </Paper>
+      </Container>
+    );
+  }
+
+  return (
+    <Container maxWidth="md" sx={{ py: 4, mt: 8 }}>
+      <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2,
+            fontWeight: 'bold',
+            color: 'primary.main',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 1
+          }}
+        >
+          <Casino fontSize="small" />
+                    Descubre Pokémon Aleatorios
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mb: 3 }}
+        >
+                    ¡Explora Pokémon que quizás no conocías!
+        </Typography>
+        <Button
+          variant="outlined"
+          startIcon={<Shuffle />}
+          onClick={loadRandomPokemon}
+          sx={{
+            mb: 3,
+            borderRadius: 2,
+            textTransform: 'none',
+            fontWeight: 'bold'
+          }}
+        >
+                    Obtener Nuevos Pokémon
+        </Button>
+      </Box>
+
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 2,
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          '& > *': {
+            flex: '1 1 250px',
+            minWidth: '250px',
+            maxWidth: '300px'
+          }
+        }}
+      >
+        {randomPokemon.map((pokemon) => (
+          <Box key={pokemon.id} sx={{ display: 'flex', justifyContent: 'center' }}>
+            <CardPokemon {...pokemon} />
+          </Box>
+        ))}
+      </Box>
+
+      <Box sx={{ textAlign: 'center', mt: 3 }}>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}
+        >
+          <Lightbulb fontSize="small" />
+                    Haz clic en cualquier Pokémon para ver más detalles
+        </Typography>
+      </Box>
+    </Container>
+  );
 };
 
 export default RandomPokemonSection;

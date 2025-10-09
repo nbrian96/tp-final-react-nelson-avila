@@ -1,15 +1,15 @@
-import { Routes, Route } from 'react-router-dom'
-import { Box } from '@mui/material'
+import { Route, Routes } from 'react-router-dom';
+import { Box } from '@mui/material';
 
-import Home from '@pages/Home'
-import NotFound from '@pages/NotFound'
-import PokemonDetails from '@pages/PokemonDetails'
-import PokemonList from '@pages/PokemonList'
-import FavoritePokemonList from '@pages/FavoritePokemonList'
+import Home from '@pages/Home';
+import NotFound from '@pages/NotFound';
+import PokemonDetails from '@pages/PokemonDetails';
+import PokemonList from '@pages/PokemonList';
+import FavoritePokemonList from '@pages/FavoritePokemonList';
 
-import Footer from '@components/Footer'
-import Navbar from '@components/Navbar'
-import ScrollToTopButton from '@components/ScrollToTopButton'
+import Footer from '@components/Footer';
+import Navbar from '@components/Navbar';
+import ScrollToTopButton from '@components/ScrollToTopButton';
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
       <ScrollToTopButton />
       <Footer />
     </Box>
-  )
+  );
 }
 
-export default App
+export default App;

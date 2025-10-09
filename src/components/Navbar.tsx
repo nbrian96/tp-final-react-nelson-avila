@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import {
   AppBar,
-  Toolbar,
-  Typography,
+  Box,
   Button,
-  IconButton,
   Drawer,
+  IconButton,
   List,
   ListItem,
-  Box,
+  Toolbar,
+  Typography,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,7 +18,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { APP_NAME } from '@constants/index';
 
 const Navbar: React.FC = () => {
@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   const menuItems = [
     { text: 'Inicio', path: '/', icon: <HomeIcon /> },
     { text: 'Pokédex', path: '/pokedex', icon: <SportsEsportsIcon /> },
-    { text: 'Favoritos', path: '/favorites', icon: <FavoriteIcon /> },
+    { text: 'Favoritos', path: '/favorites', icon: <FavoriteIcon /> }
   ];
 
   const drawer = (
@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
               startIcon={item.icon}
               sx={{
                 color: location.pathname === item.path ? 'primary.main' : 'text.primary',
-                fontWeight: location.pathname === item.path ? 'bold' : 'normal',
+                fontWeight: location.pathname === item.path ? 'bold' : 'normal'
               }}
             >
               {item.text}
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
                   sx={{
                     fontWeight: location.pathname === item.path ? 'bold' : 'normal',
                     borderBottom: location.pathname === item.path ? '2px solid' : 'none',
-                    borderBottomColor: 'white',
+                    borderBottomColor: 'white'
                   }}
                 >
                   {item.text}
@@ -116,11 +116,11 @@ const Navbar: React.FC = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true,
+          keepMounted: true
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 }
         }}
       >
         {drawer}
