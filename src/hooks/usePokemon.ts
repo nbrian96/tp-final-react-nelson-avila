@@ -79,3 +79,27 @@ export const fetchPokemonDetails = async (pokemon: IPokemon) => {
     }
 };
 
+export const fetchRandomPokemon = async (count: number = 3) => {
+    try {
+        const response = await fetch(`${POKEMON_API_BASE_URL}/pokemon?limit=1000`);
+
+        if (!response.ok) {
+            throw new Error('Error al cargar la lista de Pokémon');
+        }
+
+        const data: IPokemonListResponse = await response.json();
+
+        const shuffled = data.results.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, count);
+
+        const detailsPromises = selected.map(async (pokemon: IPokemon) => {
+            return fetchPokemonDetails(pokemon);
+        });
+
+        const details = await Promise.all(detailsPromises);
+        return details;
+    } catch (error) {
+        throw new Error((error as Error).message);
+    }
+};
+

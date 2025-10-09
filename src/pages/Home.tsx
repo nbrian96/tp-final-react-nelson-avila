@@ -1,31 +1,52 @@
-import { useState } from 'react'
-import reactLogo from '@assets/react.svg'
-import { Container } from '@mui/material'
-import './Home.css'
+import { Container, Typography, Box } from '@mui/material'
+import { BACKGROUND_COLOR } from '@constants/index'
+import { useAppSelector } from '@store/hooks'
+import PokemonCarousel from '@/components/PokemonCarousel'
+import RandomPokemonSection from '@components/RandomPokemonSection'
 
 export default function Home() {
-    const [count, setCount] = useState(0)
+    const favorites = useAppSelector(state => state.favorites.favorites);
 
     return (
-        <Container className="home-container" maxWidth="lg" sx={{ py: 4 }}>
-            <h1>Home Page</h1>
-            <div>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+        <Container
+            maxWidth="lg"
+            sx={{
+                textAlign: 'center',
+                py: 10,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '90vh',
+                backgroundColor: BACKGROUND_COLOR
+            }}
+        >
+            <Box sx={{ textAlign: 'center', mb: 4 }}>
+                <Typography
+                    variant="h3"
+                    component="h1"
+                    sx={{
+                        fontWeight: 'bold',
+                        color: 'primary.main',
+                        mb: 2
+                    }}
+                >
+                    ¡Bienvenido a tu Pokédex!
+                </Typography>
+                <Typography
+                    variant="h6"
+                    color="text.secondary"
+                    sx={{ maxWidth: '600px', mx: 'auto' }}
+                >
+                    Explora el mundo de los Pokémon, descubre sus habilidades y guarda tus favoritos
+                </Typography>
+            </Box>
+
+            {favorites.length > 0 && (
+                <PokemonCarousel pokemons={ favorites } />
+            )}
+
+            <RandomPokemonSection />
         </Container>
     );
 }

@@ -37,12 +37,13 @@ const FavoritePokemonList = () => {
             {favorites.length > 0 && (
                 <Container>
                     <Typography
-                        variant="body1"
+                        variant="h3"
+                        component="h1"
                         color="text.primary"
                         gutterBottom
                         align="center"
                         fontSize="2.5rem"
-                        sx={{ fontWeight: 'bold' }}
+                        sx={{ fontWeight: 'bold', color: 'primary.main' }}
                     >
                         Tus Pokémones Favoritos
                     </Typography>

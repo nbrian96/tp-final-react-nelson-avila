@@ -57,14 +57,19 @@ const PokemonList = () => {
     return (
         <Container maxWidth="lg" sx={{ py: 4, backgroundColor: BACKGROUND_COLOR }}>
             <Typography
-                    variant="body1"
-                    color="text.primary"
-                    gutterBottom
-                    align="center"
-                    fontSize="2.5rem"
-                    sx={{ fontWeight: 'bold' }}
-                >
-                Pokédex
+                variant="h3"
+                component="h1"
+                color="text.primary"
+                gutterBottom
+                align="center"
+                fontSize="2.5rem"
+                sx={{
+                    fontWeight: 'bold',
+                    color: 'primary.main',
+                    my: 8
+                }}
+            >
+                Encuentra tus Pokémon favoritos
             </Typography>
 
             <Grid

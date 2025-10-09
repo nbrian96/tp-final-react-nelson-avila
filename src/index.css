@@ -22,6 +22,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Estilos base del carrusel */
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+}
+.slick-dots li button:before {
+  color: #f44336; /* opcional: color de los puntitos */
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
