@@ -10,8 +10,11 @@ import {
 } from '@mui/material';
 
 import { getTypeColor } from '@hooks/usePokemon';
+
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
-import PokemonStats from './PokemonStats';
+
+import PokemonStats from '@components/PokemonStats';
+import FavoriteButton from '@components/FavoriteButton';
 
 const CardPokemonDetails = (pokemon: IPokemonDetails) => {
     const image = pokemon.sprites.other?.home?.front_default || pokemon.sprites.front_default;
@@ -59,11 +62,13 @@ const CardPokemonDetails = (pokemon: IPokemonDetails) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 transition: 'transform 0.2s',
+                                position: 'relative',
                                 '&:hover': {
                                     transform: 'translateY(-4px)',
                                     boxShadow: 4,
                                 }
                             }}>
+                            <FavoriteButton pokemon={pokemon} />
                             <CardMedia
                                 component="img"
                                 height="100%"

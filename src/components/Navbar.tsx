@@ -12,9 +12,12 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import { useNavigate, useLocation } from 'react-router-dom';
 import { APP_NAME } from '@constants/index';
 
@@ -37,11 +40,12 @@ const Navbar: React.FC = () => {
   const menuItems = [
     { text: 'Inicio', path: '/', icon: <HomeIcon /> },
     { text: 'Pokédex', path: '/pokedex', icon: <SportsEsportsIcon /> },
+    { text: 'Favoritos', path: '/favorites', icon: <FavoriteIcon /> },
   ];
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }} onClick={() => handleNavigation('/')}>
+      <Typography variant="h6" sx={{ my: 2 }}>
         {APP_NAME}
       </Typography>
       <List>
@@ -70,8 +74,7 @@ const Navbar: React.FC = () => {
         <Toolbar>
           <Typography
             variant="h6"
-            component="div"
-            onClick={() => handleNavigation('/')}
+            component="h2"
             sx={{ flexGrow: 1, fontWeight: 'bold' }}
           >
             {APP_NAME}

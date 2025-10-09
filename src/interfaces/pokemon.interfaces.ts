@@ -49,3 +49,7 @@ export interface IPokemonDetails {
         flavor_text: string;
     }>;
 }
+
+export interface IFavoritesState {
+    favorites: IPokemonDetails[];
+}

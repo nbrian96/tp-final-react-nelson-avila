@@ -1,9 +1,12 @@
 import { Card, CardMedia, CardContent, Typography, Box, Chip } from '@mui/material';
+
 import { getTypeColor } from '@hooks/usePokemon';
+
+import FavoriteButton from '@components/FavoriteButton';
+
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const CardPokemon = (pokemon: IPokemonDetails) => {
-
     const handleCardClick = () => {
         window.open(`/pokemon/${pokemon.name}`, '_blank');
     };
@@ -20,12 +23,14 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
                 flexDirection: 'column',
                 transition: 'transform 0.2s',
                 cursor: 'pointer',
+                position: 'relative',
                 '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: 4,
                 }
             }}
         >
+            <FavoriteButton pokemon={pokemon} />
             <CardMedia
                 component="img"
                 height="200"

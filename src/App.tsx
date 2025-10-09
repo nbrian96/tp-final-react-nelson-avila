@@ -5,6 +5,7 @@ import Home from '@pages/Home'
 import NotFound from '@pages/NotFound'
 import PokemonDetails from '@pages/PokemonDetails'
 import PokemonList from '@pages/PokemonList'
+import FavoritePokemonList from '@pages/FavoritePokemonList'
 
 import Footer from '@components/Footer'
 import Navbar from '@components/Navbar'
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pokedex" element={<PokemonList />} />
           <Route path="/pokemon/:id" element={<PokemonDetails />} />
+          <Route path="/favorites" element={<FavoritePokemonList />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Box>
