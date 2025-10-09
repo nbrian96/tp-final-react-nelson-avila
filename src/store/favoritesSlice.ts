@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { IPokemonDetails, IFavoritesState } from '@interfaces/pokemon.interfaces';
-import { loadFavoritesFromStorage, saveFavoritesToStorage, clearFavoritesFromStorage } from './localStorage';
+import { loadFavoritesFromStorage, saveFavoritesToStorage, clearFavoritesFromStorage, getFavoritesFromStorage } from './localStorage';
 
 const initialState: IFavoritesState = {
   favorites: loadFavoritesFromStorage(),
@@ -38,6 +38,9 @@ const favoritesSlice = createSlice({
     clearFavorites: (state) => {
       state.favorites = [];
       clearFavoritesFromStorage();
+    },
+    getFavorites: (state) => {
+      state.favorites = getFavoritesFromStorage();
     },
   },
 });

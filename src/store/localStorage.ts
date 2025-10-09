@@ -29,3 +29,7 @@ export const clearFavoritesFromStorage = (): void => {
     console.error('Error clearing favorites from localStorage:', error);
   }
 };
+
+export const getFavoritesFromStorage = (): IPokemonDetails[] => {
+  return loadFavoritesFromStorage();
+};
