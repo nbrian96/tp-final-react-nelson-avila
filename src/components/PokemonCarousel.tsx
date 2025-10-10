@@ -52,32 +52,37 @@ const PokemonCarousel = ({ pokemons }: PokemonCarouselProps) => {
   }), [getSlidesToShow, shouldBeInfinite]);
 
   return (
-    <Container>
+    <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography
-        variant="body1"
-        color="text.primary"
-        gutterBottom
-        align="center"
-        fontSize="1.5rem"
+        variant="h5"
         sx={{
+          mb: 3,
+          textAlign: 'center',
           fontWeight: 'bold',
           color: 'primary.main'
-
         }}
       >
         Tus Pokémones Favoritos
       </Typography>
-      <Slider {...settings}>
-        {pokemons.map((pokemon: IPokemonDetails) => (
-          <Box key={pokemon.id} sx={{
-            px: { xs: 0.5, sm: 1 },
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
-            <CardPokemon {...pokemon} />
-          </Box>
-        ))}
-      </Slider>
+      <Box sx={{
+        '& .slick-slide': {
+          padding: '0 8px'
+        },
+        '& .slick-list': {
+          margin: '0 -8px'
+        }
+      }}>
+        <Slider {...settings}>
+          {pokemons.map((pokemon: IPokemonDetails) => (
+            <Box key={pokemon.id} sx={{
+              display: 'flex',
+              justifyContent: 'center'
+            }}>
+              <CardPokemon {...pokemon} />
+            </Box>
+          ))}
+        </Slider>
+      </Box>
     </Container>
   );
 };
