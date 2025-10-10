@@ -42,7 +42,7 @@ const PokemonList = () => {
     renderPokemonList(currentPage);
   }, [currentPage]);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
