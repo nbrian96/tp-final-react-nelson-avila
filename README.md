@@ -2,6 +2,8 @@
 
 Una aplicación web moderna para explorar el mundo de los Pokémon, desarrollada con React, TypeScript y Material-UI.
 
+Disfruta de la web en: https://nbrian96.github.io/tp-final-react-nelson-avila/
+
 ## ✨ Características
 
 - 🔍 **Exploración de Pokémon**: Navega por una lista completa de Pokémon
