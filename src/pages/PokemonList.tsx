@@ -69,7 +69,7 @@ const PokemonList = () => {
           my: 8
         }}
       >
-                Encuentra tus Pokémon favoritos
+        Encuentra tus Pokémon favoritos
       </Typography>
 
       <Grid
@@ -81,7 +81,7 @@ const PokemonList = () => {
         {pokemonDetails.map((pokemon: IPokemonDetails) => (
           <Grid
             key={pokemon.id}
-            size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+            size={{ xs: 6, sm: 6, md: 4, lg: 3 }}
             display="flex"
             justifyContent="center"
           >

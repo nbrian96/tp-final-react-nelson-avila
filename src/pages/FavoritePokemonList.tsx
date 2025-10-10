@@ -29,7 +29,7 @@ const FavoritePokemonList = () => {
       <Box>
         {favorites.length === 0 && (
           <Typography variant="body1" color="text.primary" gutterBottom align="center" fontSize="2.5rem" sx={{ fontWeight: 'bold' }}>
-                        No tienes Pokémones Favoritos aún
+            No tienes Pokémon Favoritos aún
           </Typography>
         )}
       </Box>
@@ -45,7 +45,7 @@ const FavoritePokemonList = () => {
             fontSize="2.5rem"
             sx={{ fontWeight: 'bold', color: 'primary.main' }}
           >
-                        Tus Pokémones Favoritos
+            Tus Pokémon Favoritos
           </Typography>
 
           <Box
@@ -69,7 +69,7 @@ const FavoritePokemonList = () => {
             {favorites.map((pokemon: IPokemonDetails) => (
               <Grid
                 key={pokemon.id}
-                size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+                size={{ xs: 6, sm: 6, md: 4, lg: 3 }}
                 display="flex"
                 justifyContent="center"
               >

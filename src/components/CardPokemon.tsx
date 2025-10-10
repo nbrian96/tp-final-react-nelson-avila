@@ -1,16 +1,17 @@
 import { Box, Card, CardContent, CardMedia, Chip, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { getTypeColor } from '@hooks/usePokemon';
 
 import FavoriteButton from '@components/FavoriteButton';
 
-import { APP_BASENAME } from '@constants/index';
-
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const CardPokemon = (pokemon: IPokemonDetails) => {
+  const navigate = useNavigate();
+
   const handleCardClick = () => {
-    window.open(`${APP_BASENAME}/pokemon/${pokemon.name}`, '_blank');
+    navigate(`/pokemon/${pokemon.name}`);
   };
 
   const image = pokemon.sprites.other?.home?.front_default || pokemon.sprites.front_default;
@@ -19,9 +20,7 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
     <Card
       onClick={handleCardClick}
       sx={{
-        height: '100%',
-        width: { xs: '8rem', sm: '10rem', md: '15rem' },
-        maxWidth: { xs: '8rem', sm: '10rem', md: '15rem' },
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s',
@@ -36,21 +35,38 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
       <FavoriteButton pokemon={pokemon} />
       <CardMedia
         component="img"
-        height="200"
+        height="150rem"
         image={image}
         alt={pokemon.name}
         sx={{ objectFit: 'contain', p: 1 }}
       />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography sx={{ fontSize: '0.8rem', my: 1 }}>
-                    #{pokemon.id.toString().padStart(3, '0')}
+      <CardContent sx={{
+        flexGrow: 1,
+        pt: { xs: 0, sm: 0, md: 1 }
+      }}>
+        <Typography sx={{
+          textAlign: 'center',
+          fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.8rem' },
+          my: 1
+        }}>
+          #{pokemon.id.toString().padStart(3, '0')}
         </Typography>
-        <Typography sx={{ fontWeight: 'bold', fontSize: '1rem', my: 1 }}>
+        <Typography sx={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' },
+          my: 1
+        }}>
           {pokemon.name
             .replaceAll('-', ' ')
             .charAt(0).toUpperCase() + pokemon.name.replaceAll('-', ' ').slice(1)}
         </Typography>
-        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+        <Box sx={{
+          display: 'flex',
+          gap: 1,
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
           {pokemon.types.map((type, index) => (
             <Chip
               key={index}
@@ -60,6 +76,7 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
                 backgroundColor: getTypeColor(type.type.name),
                 color: 'white',
                 fontWeight: 'bold'
+                // fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.75rem' }
               }}
             />
           ))}

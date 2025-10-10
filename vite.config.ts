@@ -4,7 +4,7 @@ import path from 'path'
 import { APP_BASENAME } from './src/constants/index'
 
 export default defineConfig({
-  base: `${APP_BASENAME}/`,
+  base: `${APP_BASENAME}`,
   plugins: [react()],
   resolve: {
     alias: {

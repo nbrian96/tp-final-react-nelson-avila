@@ -1,6 +1,6 @@
 export const APP_NAME = 'TP Final Integrador';
 
-export const APP_BASENAME = '/tp-final-react-nelson-avila';
+export const APP_BASENAME = '/tp-final-react-nelson-avila/';
 
 export const POKEMON_LIMIT = 10000;
 

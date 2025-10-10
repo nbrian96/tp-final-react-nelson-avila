@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Box, Button, Container, Paper, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Casino, Lightbulb, Refresh, Shuffle } from '@mui/icons-material';
 
 import { fetchRandomPokemon } from '@hooks/usePokemon';
@@ -19,7 +19,7 @@ const RandomPokemonSection = () => {
     try {
       setLoading(true);
       setError(null);
-      const pokemon = await fetchRandomPokemon(3);
+      const pokemon = await fetchRandomPokemon(4);
       setRandomPokemon(pokemon);
     } catch (err) {
       setError('Error al cargar Pokémon aleatorios');
@@ -103,25 +103,23 @@ const RandomPokemonSection = () => {
         </Button>
       </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          gap: 2,
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          '& > *': {
-            flex: '1 1 250px',
-            minWidth: '250px',
-            maxWidth: '300px'
-          }
-        }}
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
       >
-        {randomPokemon.map((pokemon) => (
-          <Box key={pokemon.id} sx={{ display: 'flex', justifyContent: 'center' }}>
+        {randomPokemon.map((pokemon: IPokemonDetails) => (
+          <Grid
+            key={pokemon.id}
+            size={{ xs: 6, sm: 6, md: 4, lg: 3 }}
+            display="flex"
+            justifyContent="center"
+          >
             <CardPokemon {...pokemon} />
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
 
       <Box sx={{ textAlign: 'center', mt: 3 }}>
         <Typography
