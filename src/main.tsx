@@ -15,7 +15,7 @@ import { store } from './store';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/tp-final-react-nelson-avila">
         <App />
       </BrowserRouter>
     </Provider>
