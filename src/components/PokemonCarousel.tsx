@@ -7,7 +7,7 @@ import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 interface PokemonCarouselProps {
-    pokemons: IPokemonDetails[];
+  pokemons: IPokemonDetails[];
 }
 
 const PokemonCarousel = ({ pokemons }: PokemonCarouselProps) => {
@@ -15,18 +15,26 @@ const PokemonCarousel = ({ pokemons }: PokemonCarouselProps) => {
     dots: true,
     infinite: pokemons.length > 3,
     speed: 500,
-    slidesToShow: Math.min(pokemons.length, 3),
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
+    slidesToShow: Math.min(pokemons.length, 3),
     responsive: [
       {
         breakpoint: 900,
-        settings: { slidesToShow: 2 }
+        settings: {
+          slidesToShow: 2,
+          infinite: pokemons.length > 2
+        }
       },
       {
         breakpoint: 600,
-        settings: { slidesToShow: 1 }
+        settings: {
+          slidesToShow: 1,
+          infinite: pokemons.length > 1,
+          centerMode: false,
+          centerPadding: '0px'
+        }
       }
     ]
   };
@@ -45,11 +53,15 @@ const PokemonCarousel = ({ pokemons }: PokemonCarouselProps) => {
 
         }}
       >
-                Tus Pokémones Favoritos
+        Tus Pokémones Favoritos
       </Typography>
       <Slider {...settings}>
         {pokemons.map((pokemon: IPokemonDetails) => (
-          <Box key={pokemon.id} sx={{ px: 1 }}>
+          <Box key={pokemon.id} sx={{
+            px: { xs: 0.5, sm: 1 },
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
             <CardPokemon {...pokemon} />
           </Box>
         ))}

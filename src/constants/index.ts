@@ -1,5 +1,7 @@
 export const APP_NAME = 'TP Final Integrador';
 
+export const APP_BASENAME = '/tp-final-react-nelson-avila';
+
 export const POKEMON_LIMIT = 10000;
 
 export const POKEMON_API_BASE_URL = 'https://pokeapi.co/api/v2';

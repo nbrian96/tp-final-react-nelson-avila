@@ -11,11 +11,12 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App.tsx';
 import { store } from './store';
+import { APP_BASENAME } from './constants/index';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/tp-final-react-nelson-avila">
+      <BrowserRouter basename={APP_BASENAME}>
         <App />
       </BrowserRouter>
     </Provider>

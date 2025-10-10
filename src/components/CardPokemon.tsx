@@ -4,11 +4,13 @@ import { getTypeColor } from '@hooks/usePokemon';
 
 import FavoriteButton from '@components/FavoriteButton';
 
+import { APP_BASENAME } from '@constants/index';
+
 import type { IPokemonDetails } from '@interfaces/pokemon.interfaces';
 
 const CardPokemon = (pokemon: IPokemonDetails) => {
   const handleCardClick = () => {
-    window.open(`/pokemon/${pokemon.name}`, '_blank');
+    window.open(`${APP_BASENAME}/pokemon/${pokemon.name}`, '_blank');
   };
 
   const image = pokemon.sprites.other?.home?.front_default || pokemon.sprites.front_default;
@@ -18,7 +20,8 @@ const CardPokemon = (pokemon: IPokemonDetails) => {
       onClick={handleCardClick}
       sx={{
         height: '100%',
-        width: '15rem',
+        width: { xs: '8rem', sm: '10rem', md: '15rem' },
+        maxWidth: { xs: '8rem', sm: '10rem', md: '15rem' },
         display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s',
